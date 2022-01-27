@@ -15,8 +15,8 @@
 $users = Get-ADGroupMember "Domain Admins"
 ##  Use this method for changing all users in a specific OU
 # $users = Get-ADUser -Filter "Enabled -eq 'true'" -SearchBase OU 
-## Get the list of accounts from the file, one username per line
-# $users = Import-Csv -Path C:\Temp\userlist.csv
+## Get the list of accounts from the file, one username per line (comment out the line: $user = $user.samaccountname)
+# $users = Get-Content -Path C:\Temp\userlist.txt
 ForEach ($user in $users) {
     $user = $user.samaccountname
     $pass = Random-Password 
