@@ -11,9 +11,12 @@
     return $password
 }
 
-
+##  Use this method for changing all members in a specific group
 $users = Get-ADGroupMember "Domain Admins"
-## $users = Get-ADUser -Filter "Enabled -eq 'true'" -SearchBase OU 
+##  Use this method for changing all users in a specific OU
+# $users = Get-ADUser -Filter "Enabled -eq 'true'" -SearchBase OU 
+## Get the list of accounts from the file, one username per line
+# $users = Import-Csv -Path C:\Temp\userlist.csv
 ForEach ($user in $users) {
     $user = $user.samaccountname
     $pass = Random-Password 
